@@ -1,17 +1,41 @@
 {
+  // https://youtu.be/eJXVEju3XLM
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "es2022",
+    "verbatimModuleSyntax": true,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+
     "strict": true,
+    "noUncheckedIndexedAccess": true,
+
+    "moduleResolution": "bundler",
+    "module": "ESNext",
+    "noEmit": true,
+
+    "lib": ["es2022"],
+
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/helpers": ["./src/helpers/index.ts"],
+      "@/assets/*": ["./src/assets/*"],
+      "@/types": ["./src/types/index.ts"],
+      "@/components/*": ["./src/components/*"],
+      "@/store/zustand/*": ["./src/store/zustand/*"],
+      "@/components/ui": ["./src/components/ui/index.ts"],
+      "@/utils": ["./src/utils/index.ts"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/env": ["./src/env/index.ts"]
     }
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts"
+    "expo-env.d.ts",
+    "nativewind-env.d.ts"
   ]
 }
