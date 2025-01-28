@@ -5,7 +5,7 @@ const initState: State = {
         ID: '1234567890',
         publicKey: '1234567890',
         nickname: 'coolperson67',
-        description: 'This is a description'
+        note: 'This is a description'
     }]
 }
 
@@ -23,7 +23,7 @@ type State = {
         ID: string
         publicKey: string
         nickname: string
-        description: string
+        note: string
     }[]
 }
 

@@ -6,6 +6,7 @@ import { z } from 'zod'
 import { View } from 'react-native'
 import Text from '@/components/ui/Text'
 import SubmitButton from '@/components/ui/auth/SubmitButton'
+import useDisplayingErrors from '@/hooks/useDisplayingErrors'
 
 const SignUpBtn = () => {
     const nicknameInput = useAtomValue(nicknameAtom)
@@ -19,7 +20,7 @@ const SignUpBtn = () => {
 
             signUp({ nickname, encryptionKey })
         } catch (error) {
-            console.error(error)
+            useDisplayingErrors.getState().add('dsapdjas')
         }
     }
 

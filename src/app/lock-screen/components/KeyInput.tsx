@@ -28,7 +28,7 @@ const KeyInput = () => {
             onChangeText={onChangeText}
             value={key || ''}
             placeholder='Encryption key'
-            className='w-full bg-white min-[320px]:w-[19rem] min-[350px]:w-[21rem] min-[370px]:w-[22rem] min-[390px]:w-[23rem] min-[410px]:w-[24rem] rounded-lg p-2 text-[1.3rem] placeholder:text-[#0000007f]'
+            className='w-full bg-white flex-1 rounded-lg p-2 text-[1.3rem] placeholder:text-[#0000007f]'
         />
     )
 }
