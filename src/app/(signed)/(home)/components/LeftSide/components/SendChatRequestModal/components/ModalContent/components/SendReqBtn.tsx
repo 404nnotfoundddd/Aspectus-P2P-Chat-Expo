@@ -7,12 +7,13 @@ import useKeypairs from '@/hooks/useKeypairs'
 import CheckCircle from '@/components/ui/svg/CheckCircle'
 import { useEffect, useState } from 'react'
 import { cn } from '@/utils'
+import { sendChatReq } from '@/helpers'
 
 const SendReqBtn = () => {
     const IO = useSocketIO(s => s.io)
     const [IDInput, setIDInput] = useAtom(IDInputAtom)
     const [noteInput, setNoteInput] = useAtom(noteInputAtom)
-    const publicKey = useKeypairs(s => s.publicKey)
+    const publicKey = useKeypairs(s => s.publicKey)!
     const [isSuccess, setIsSuccess] = useState<boolean>(false)
 
     useEffect(() => {
@@ -24,12 +25,12 @@ const SendReqBtn = () => {
     }, [isSuccess])
 
     const onReq = () => {
-        IO?.emit('chat-req', {
+
+        sendChatReq(IO, {
             userID: IDInput,
             publicKey,
             note: noteInput,
         })
-
 
         setIsSuccess(true)
         setIDInput('')

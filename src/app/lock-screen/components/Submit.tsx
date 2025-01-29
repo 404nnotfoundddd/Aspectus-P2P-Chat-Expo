@@ -1,7 +1,7 @@
 import SubmitButton from '@/components/ui/auth/SubmitButton'
 import { useAtom } from 'jotai'
 import { encryptionKeyAtom } from './atoms'
-import bcrypt from 'bcryptjs'
+import bcrypt from 'react-native-bcrypt'
 import useRealEncryptionKey from '@/hooks/useRealEncryptionKey'
 import useMMKVString from '@/hooks/useMMKVString'
 import { useState } from 'react'

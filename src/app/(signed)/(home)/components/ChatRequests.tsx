@@ -1,4 +1,5 @@
 import Text from '@/components/ui/Text'
+import { receiveChatReq } from '@/helpers'
 import useChatRequests from '@/hooks/useChatRequests'
 import useKeypairs from '@/hooks/useKeypairs'
 import useSocketIO from '@/store/zustand/useSocketIO'
@@ -6,9 +7,18 @@ import { Modal, View, TouchableOpacity } from 'react-native'
 
 const ChatRequests = () => {
     const requests = useChatRequests(s => s.requests)
+    const addReq = useChatRequests(s => s.add)
     const removeRequest = useChatRequests(s => s.remove)
     const IO = useSocketIO(s => s.io)
     const publicKey = useKeypairs(s => s.publicKey)
+
+    receiveChatReq(IO, ({ note, publicKey, userID }) => {
+        addReq({
+            ID: userID,
+            publicKey,
+            note
+        })
+    })
 
     const handleBlock = (ID: string) => {
         removeRequest(ID)
@@ -32,12 +42,12 @@ const ChatRequests = () => {
         })
     }
 
-    return requests.map(({ ID, description, nickname, publicKey }) => (
+    return requests.map(({ ID, note, publicKey }) => (
         <Modal key={ID} transparent={true}>
             <View className='w-full flex items-center justify-center h-full bg-[#0000006e]'>
-                <View className='bg-white p-6 rounded-2xl w-[85%] gap-4 max-w-[400px] shadow-lg'>
-                    <Text className='text-xl text-black'>{`${nickname} (${ID}) Wants to chat with you`}</Text>
-                    <Text className='text-gray-600 text-md   pb-4'>{`Description: ${description}doasjdopasjdoaspjdopja`}</Text>
+                <View className='bg-gray-900 p-6 rounded-2xl w-[85%] gap-4 max-w-[400px] shadow-lg'>
+                    <Text className='text-xl text-black'>{`${ID} Wants to chat with you`}</Text>
+                    <Text className='text-gray-600 text-md pb-4'>{`Note: ${note}`}</Text>
 
                     <View className='flex flex-row justify-end space-x-3'>
                         <TouchableOpacity

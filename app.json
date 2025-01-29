@@ -31,7 +31,12 @@
       "favicon": "./src/assets/images/png/icon.png"
     },
     "plugins": [
-      ["@morrowdigital/watermelondb-expo-plugin"],
+      [
+        "@morrowdigital/watermelondb-expo-plugin",
+        {
+          "disableJsi": true
+        }
+      ],
       "expo-router",
       [
         "expo-document-picker",
@@ -43,6 +48,10 @@
         "expo-build-properties",
         {
           "android": {
+            "kotlinVersion": "1.6.10",
+            "packagingOptions": {
+              "pickFirst": ["**/libc++_shared.so"]
+            },
             "usesCleartextTraffic": true
           }
         }

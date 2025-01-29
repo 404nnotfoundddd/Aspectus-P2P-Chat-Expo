@@ -9,12 +9,14 @@ const ErrorDisplay = ({ children }: PropsWithChildren) => {
     const errors = useDisplayingErrors((s) => s.error)
 
     useEffect(() => {
-        setIsVisible(true)
+        if (errors.length > 0) {
+            setIsVisible(true)
 
-        const timeout = setTimeout(() => {
-            setIsVisible(false)
-        }, 5000)
-        return () => clearTimeout(timeout)
+            const timeout = setTimeout(() => {
+                setIsVisible(false)
+            }, 5000)
+            return () => clearTimeout(timeout)
+        }
     }, [errors])
 
     const lastError = errors[errors.length - 1]

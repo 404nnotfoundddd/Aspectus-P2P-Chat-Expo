@@ -6,7 +6,7 @@ const VerifiedEncyrptionKey = ({ children }: PropsWithChildren) => {
     const encryptionKey = useRealEncryptionKey(s => s.encryptionKey)
 
     if (encryptionKey) return children
-    return <Redirect href='/lock-screen' />
+    return <Redirect href='/pem' />
 }
 
 export default VerifiedEncyrptionKey

@@ -10,4 +10,5 @@ const TopNav = () => {
         </View>
     )
 }
-export default TopNav
+
+export default TopNav       

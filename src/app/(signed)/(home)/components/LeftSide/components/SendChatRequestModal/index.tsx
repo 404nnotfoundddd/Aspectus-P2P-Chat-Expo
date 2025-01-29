@@ -1,4 +1,3 @@
-import Button from '@/components/ui/Button'
 import Plus from '@/components/ui/svg/Plus'
 import { Fragment, useState, useEffect } from 'react'
 import { Modal, TouchableOpacity, View } from 'react-native'

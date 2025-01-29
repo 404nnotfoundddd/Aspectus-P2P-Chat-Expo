@@ -1,8 +1,5 @@
-import Button from '@/components/ui/Button'
-import Plus from '@/components/ui/svg/Plus'
 import Settings from '@/components/ui/svg/Settings'
 import WhiteIcon from '@/components/ui/svg/WhiteIcon'
-import Text from '@/components/ui/Text'
 import { Link } from 'expo-router'
 import { useAtomValue, useSetAtom } from 'jotai'
 import { Modal, View, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
@@ -80,9 +77,11 @@ const LeftSide = () => {
                                     </View>
                                 </View>
                                 <Users />
-                                <Link href={'/account'} className='w-full border-t-[0.2rem] border-[#ffffff11] flex items-end flex-col p-2 '>
-                                    <Settings className='opacity-60 hover:opacity-100 cursor-pointer' width={30} height={30} />
-                                </Link>
+                                <View className='flex items-center flex-row justify-end flex-wrap p-3'>
+                                    <Link href={'/account'} className='rounded-full bg-[#ffffff27] flex items-center justify-center flex-col p-2 '>
+                                        <Settings className='opacity-60 hover:opacity-100 cursor-pointer' width={30} height={30} />
+                                    </Link>
+                                </View>
                             </MotiView>
                         </TouchableWithoutFeedback>
                     </>
