@@ -82,6 +82,7 @@ const LeftSide = () => {
                                         <Settings className='opacity-60 hover:opacity-100 cursor-pointer' width={30} height={30} />
                                     </Link>
                                 </View>
+
                             </MotiView>
                         </TouchableWithoutFeedback>
                     </>
