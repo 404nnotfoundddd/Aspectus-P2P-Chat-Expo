@@ -1,7 +1,7 @@
 import SubmitButton from '@/components/ui/auth/SubmitButton'
 import { useAtom } from 'jotai'
 import { encryptionKeyAtom } from './atoms'
-import bcrypt from 'bcryptjs'
+import bcrypt from 'react-native-bcrypt'
 import useRealEncryptionKey from '@/hooks/useRealEncryptionKey'
 import useMMKVString from '@/hooks/useMMKVString'
 import { useState } from 'react'
@@ -10,6 +10,7 @@ import Text from '@/components/ui/Text'
 import { createURL } from 'expo-linking'
 import { onSignOut } from '@/helpers'
 import { cn } from '@/utils'
+import useDisplayingErrors from '@/hooks/useDisplayingErrors'
 
 const Submit = () => {
     const [encryptionKey, setEncryptionKey] = useAtom(encryptionKeyAtom)
@@ -26,16 +27,14 @@ const Submit = () => {
         }
         else {
             setEncryptionKey(null)
-            setError('Wrong encryption key')
+            useDisplayingErrors.getState().add('Wrong key')
         }
 
     }
 
     return (
         <View className='flex flex-col gap-8 w-full items-end'>
-            {error && <Text className='flex-1 text-red-300 web:w-full'>{`${error}`}</Text>}
             <SubmitButton disabled={!encryptionKey} onSubmit={onSubmit} isLoading={false} isSuccess={false} text='Continue' />
-
             <TouchableOpacity onPress={onSignOut} style={{ cursor: 'pointer' }} className={cn(`bg-[#ff2e4ade] select-none flex flex-row p-3 gap-2 rounded-lg drop-shadow-lg`)}>
                 <View className='flex flex-row gap-3 items-center justify-center'>
                     <Text fontFamily='outfit500' className='text-white'>Sign out</Text>

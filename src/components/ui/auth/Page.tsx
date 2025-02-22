@@ -13,10 +13,10 @@ const Page = ({ title, description, children }: Props) => {
             <SafeAreaView>
                 <ScrollView>
                     <View className='w-full h-full flex flex-col gap-10 pb-10 items-center'>
-                        <View className='flex flex-col gap-5 items-center pt-9'>
+                        <View className='flex flex-col gap-5 items-center pt-9 w-[90%]'>
                             <WhiteIcon height={100} width={100} />
                             <View className='flex flex-col gap-1 drop-shadow-lg items-center w-[90%]'>
-                                <Text fontFamily='outfit700' className='text-[#ffffff] text-center text-[3rem]'>
+                                <Text fontFamily='outfit700' className='text-[#ffffff]  w-full text-center text-[3rem]'>
                                     {title}
                                 </Text>
                                 <Text fontFamily='outfit500' className='text-[#ffffff] text-center max-w-[20rem] text-[1rem]'>

@@ -16,12 +16,12 @@ const useKeypairs = create<State & Action>((set, get) => ({
 export default useKeypairs
 
 type State = {
-    privateKey: string | JsonWebKey | null
-    publicKey: string | JsonWebKey | null
+    privateKey: JsonWebKey | null
+    publicKey: JsonWebKey | null
 }
 
 type Action = {
-    setPrivKey: (key: string | JsonWebKey) => void
-    setPubKey: (key: string | JsonWebKey) => void
+    setPrivKey: (key: JsonWebKey) => void
+    setPubKey: (key: JsonWebKey) => void
     reset: () => void
 }

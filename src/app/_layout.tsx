@@ -4,6 +4,7 @@ export { ErrorBoundary } from './components/ErrorBoundary'
 import "../globals.css"
 import useMyFonts from './hooks/useFonts'
 import Providers from './components/Providers'
+import { View } from 'react-native'
 
 export default function RootLayout() {
   const { loaded } = useMyFonts()
@@ -15,8 +16,10 @@ export default function RootLayout() {
   }, [loaded])
 
   if (!loaded) return null
-  return <Providers>
-    <Slot />
-  </Providers>
+  return <View className='w-full h-full relative'>
+    <Providers>
+      <Slot />
+    </Providers>
+  </View>
 
 }

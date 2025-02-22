@@ -2,7 +2,7 @@ import { env } from '@/env'
 import useMMKV from '@/store/zustand/useMMKV'
 import { useMutation } from '@tanstack/react-query'
 import * as Linking from 'expo-linking'
-import bcrypt from 'bcryptjs'
+import bcrypt from 'react-native-bcrypt'
 
 import useRealEncryptionKey from '@/hooks/useRealEncryptionKey'
 

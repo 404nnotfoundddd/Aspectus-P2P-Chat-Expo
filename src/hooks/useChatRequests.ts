@@ -1,17 +1,14 @@
+import type { Unarray } from '@/types'
 import { create } from 'zustand'
 
 const initState: State = {
-    requests: [{
-        ID: '1234567890',
-        publicKey: '1234567890',
-        nickname: 'coolperson67',
-        description: 'This is a description'
-    }]
+    requests: []
 }
 
 const useChatRequests = create<State & Action>((set, get) => ({
     ...initState,
 
+    add: (data) => set({ ...get(), requests: [...get().requests, data] }),
     remove: (ID) => set({ ...get(), requests: get().requests.filter(request => request.ID !== ID) }),
     reset: () => set({ ...initState })
 }))
@@ -21,13 +18,13 @@ export default useChatRequests
 type State = {
     requests: {
         ID: string
-        publicKey: string
-        nickname: string
-        description: string
+        publicKey: JsonWebKey
+        note: string
     }[]
 }
 
 type Action = {
     remove: (ID: string) => void
     reset: () => void
+    add: (data: Unarray<State['requests']>) => void
 }

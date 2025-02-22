@@ -15,9 +15,9 @@ const Modal = ({ visible, close }: Props) => {
     const setEncryptionKey2 = useSetAtom(encryptionKey2Atom)
 
     return <RNModal visible={visible} transparent={true} >
-        <View
-            className='flex flex-col w-full h-full bg-[#00000077] gap-4 items-center justify-center  px-4 py-20'>
-            <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
+            <View
+                className='flex flex-col w-full h-full bg-[#00000077] gap-4 items-center justify-center  px-4 py-20'>
                 <MotiView from={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className='shadow-[0_0px_10px_1px_rgba(0,0,0,0.5)] bg-[#efefef] p-4 md:w-[40rem] xxs:w-[90%] rounded-lg flex flex-col gap-10 items-center justify-center'>
                     <View className='flex flex-col items-center gap-2'>
                         <Text fontFamily='outfit800' className='text-red-500 text-[2rem]'>Import data</Text>
@@ -41,8 +41,8 @@ const Modal = ({ visible, close }: Props) => {
                     </View>
                 </MotiView>
 
-            </ScrollView>
-        </View>
+            </View>
+        </ScrollView>
     </RNModal >
 }
 

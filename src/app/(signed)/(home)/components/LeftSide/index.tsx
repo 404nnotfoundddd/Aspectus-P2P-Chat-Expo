@@ -1,8 +1,5 @@
-import Button from '@/components/ui/Button'
-import Plus from '@/components/ui/svg/Plus'
 import Settings from '@/components/ui/svg/Settings'
 import WhiteIcon from '@/components/ui/svg/WhiteIcon'
-import Text from '@/components/ui/Text'
 import { Link } from 'expo-router'
 import { useAtomValue, useSetAtom } from 'jotai'
 import { Modal, View, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
@@ -11,6 +8,7 @@ import { MotiView, AnimatePresence } from 'moti'
 import CloseBtn from './components/CloseBtn'
 import { useState, useEffect } from 'react'
 import SendChatRequestModal from './components/SendChatRequestModal'
+import Users from './components/Users'
 
 const LeftSide = () => {
     const isOpen = useAtomValue(isLeftSideOpenAtom)
@@ -78,16 +76,13 @@ const LeftSide = () => {
                                         <CloseBtn />
                                     </View>
                                 </View>
-                                <View className='grow flex flex-col gap-2 p-4'>
-                                    {['Ayşe', 'Jack', 'Tunç'].map((item) => (
-                                        <Button className='flex flex-row gap-2 items-center hover:bg-[#ffffff23] p-2 rounded-lg' key={item}>
-                                            <Text className='text-[#ffffffa8] text-[1.2rem]'>{item}</Text>
-                                        </Button>
-                                    ))}
+                                <Users />
+                                <View className='flex items-center flex-row justify-end flex-wrap p-3'>
+                                    <Link href={'/account'} className='rounded-full bg-[#ffffff27] flex items-center justify-center flex-col p-2 '>
+                                        <Settings className='opacity-60 hover:opacity-100 cursor-pointer' width={30} height={30} />
+                                    </Link>
                                 </View>
-                                <Link href={'/account'} className='w-full border-t-[0.2rem] border-[#ffffff11] flex items-end flex-col p-2 '>
-                                    <Settings className='opacity-60 hover:opacity-100 cursor-pointer' width={30} height={30} />
-                                </Link>
+
                             </MotiView>
                         </TouchableWithoutFeedback>
                     </>
